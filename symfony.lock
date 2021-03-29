@@ -41,6 +41,48 @@
     "nexylan/slack-bundle": {
         "version": "v2.2.1"
     },
+    "nyholm/psr7": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "0cd4d2d0e7f646fda75f9944f747a56e6ed13d4c"
+        },
+        "files": [
+            "./config/packages/nyholm_psr7.yaml"
+        ]
+    },
+    "php-extended/php-domain-interface": {
+        "version": "3.0.6"
+    },
+    "php-extended/php-domain-object": {
+        "version": "3.0.7"
+    },
+    "php-extended/php-http-message-factory-psr17": {
+        "version": "3.1.12"
+    },
+    "php-extended/php-http-message-psr7": {
+        "version": "3.2.9"
+    },
+    "php-extended/php-parser-interface": {
+        "version": "3.0.19"
+    },
+    "php-extended/php-parser-object": {
+        "version": "3.0.12"
+    },
+    "php-extended/php-uri-parser-interface": {
+        "version": "3.0.16"
+    },
+    "php-extended/php-uri-parser-object": {
+        "version": "3.0.13"
+    },
+    "php-extended/polyfill-php80-stringable": {
+        "version": "1.0.18"
+    },
+    "php-extended/polyfill-str-levenshtein": {
+        "version": "1.0.3"
+    },
     "php-http/client-common": {
         "version": "1.10.0"
     },
