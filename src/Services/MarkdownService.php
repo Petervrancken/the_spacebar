@@ -20,13 +20,18 @@ class MarkdownService
     private $cache;
 
     private $logger;
+    /**
+     * @var bool
+     */
+    private $isDebug;
 
-    public function __construct(MarkdownInterface $markdown, AdapterInterface $cache, LoggerInterface $markdownLogger)
+    public function __construct(MarkdownInterface $markdown, AdapterInterface $cache, LoggerInterface $markdownLogger, bool $isDebug)
     {
 
         $this->markdown = $markdown;
         $this->cache = $cache;
         $this->logger = $markdownLogger;
+        $this->isDebug = $isDebug;
     }
 
     public function parse(string $source)
@@ -34,6 +39,11 @@ class MarkdownService
         if(stripos($source, 'bacon') !== false){
             $this->logger->info('They are talking about bacon again!');
         }
+
+        if($this->isDebug){
+            return $this->markdown->transform($source);
+        }
+
         $item = $this->cache->getItem('markdown_'.md5($source));
         if(!$item->isHit()){
             $item->set($this->markdown->transform($source));
