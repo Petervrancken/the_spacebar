@@ -30,6 +30,13 @@ class ArticleController extends AbstractController
         return $this->render('article/homepage.html.twig');
     }
     /**
+     * @Route ("/admin/article/new")
+     */
+    public function new()
+    {
+        return new Response('Time for some Doctrine magic!');
+    }
+    /**
      * @Route("/news/{slug}", name="article_show")
      */
     public function show($slug, MarkdownService $markdownService, PeterStringService $peterStringService/*, Client $slack*/)
