@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 use App\Entity\Comment;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CommentFixture extends BaseFixtures
+class CommentFixture extends BaseFixtures Implements DependentFixtureInterface
 {
     protected function loadData(ObjectManager $manager)
     {
@@ -17,11 +18,16 @@ class CommentFixture extends BaseFixtures
             );
             $comment->setAuthorName( $this->faker->name);
             $comment->setCreatedAt($this->faker->dateTimeBetween('-1 months', '-1 seconds'));
-            $comment->setArticle($this->getReference(Article::class . '_0'));
+            $comment->setArticle($this->getRandomReference(Article::class));
 
         });
 
         $manager->flush();
     }
+    public function getDependencies()
+    {
+        return array( ArticleFixtures::class );
+    }
+
 }
 
