@@ -12,6 +12,7 @@ use Michelf\MarkdownInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Symfony\Component\Console\Question\Question;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -41,7 +42,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/news/{slug}", name="article_show")
      */
-    public function show($slug, EntityManagerInterface $em/*, Client $slack*/)
+    public function show(Article $article/*, Client $slack*/)
     {
         /*if ($slug === 'khaaaaaan')
         {
@@ -53,15 +54,15 @@ class ArticleController extends AbstractController
         }*/
 
 
-        //dd($slug);
-        $repo = $em->getRepository(Article::class);
-        //dd($repo);
-        /** @var Article $article */
-        $article = $repo->findOneBy(['slug' => $slug]);
-        //dd($slug);
-        if ( !$article){
-            throw $this->createNotFoundException( sprintf("No article found with slug %s", $slug));
-        }
+//        //dd($slug);
+//        $repo = $em->getRepository(Article::class);
+//        //dd($repo);
+//        /** @var Article $article */
+//        $article = $repo->findOneBy(['slug' => $slug]);
+//        //dd($slug);
+//        if ( !$article){
+//            throw $this->createNotFoundException( sprintf("No article found with slug %s", $slug));
+//        }
 
         $comments = [
             'I ate a normal rock once. It did NOT taste like bacon!',
