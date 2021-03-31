@@ -2,8 +2,10 @@
 
 
 namespace App\Controller;
+use App\Entity\Article;
 use App\Services\MarkdownService;
 use App\Services\PeterStringService;
+use Doctrine\ORM\EntityManagerInterface;
 use Michelf\MarkdownInterface;
 //use Nexy\Slack\Client;
 use Psr\Log\LoggerInterface;
@@ -30,17 +32,24 @@ class ArticleController extends AbstractController
         return $this->render('article/homepage.html.twig');
     }
     /**
-     * @Route ("/admin/article/new")
-     */
-    public function new()
-    {
-        return new Response('Time for some Doctrine magic!');
-    }
-    /**
      * @Route("/news/{slug}", name="article_show")
      */
-    public function show($slug, MarkdownService $markdownService, PeterStringService $peterStringService/*, Client $slack*/)
+    public function show($slug, MarkdownService $markdownService, EntityManagerInterface $em, PeterStringService $peterStringService/*, Client $slack*/)
     {
+        //dd($slug);
+        $repo = $em->getRepository(Article::class);
+        //dd($repo);
+        /** @var Article $article */
+        $article = $repo->findOneBy(['slug' => $slug]);
+        //dd($slug);
+        if ( !$article){
+            throw $this->createNotFoundException( sprintf("No article found with slug %s", $slug));
+        }
+
+        
+
+
+
         /*if ($slug === 'khaaaaaan')
         {
             $message = $slack->createMessage()
