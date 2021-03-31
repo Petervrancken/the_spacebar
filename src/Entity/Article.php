@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 
 /**
@@ -12,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Article
 {
+    use TimestampableEntity;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -55,10 +57,6 @@ class Article
      */
     private $imageFilename;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
 
     public function getTitle(): ?string
@@ -155,4 +153,7 @@ class Article
         $this->heartCount++;
         return $this;
     }
+
+
+
 }
