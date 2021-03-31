@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use App\Services\MarkdownService;
 use App\Services\PeterStringService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,9 +29,8 @@ class ArticleController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage(EntityManagerInterface $entityManager)
+    public function homepage(ArticleRepository $repository)
     {
-        $repository = $entityManager->getRepository(Article::class);
         $articles = $repository->findAllPublishedOrderedByNewest();
 
         return $this->render('article/homepage.html.twig', [
