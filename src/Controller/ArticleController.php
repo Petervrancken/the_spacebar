@@ -4,6 +4,7 @@
 namespace App\Controller;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
 use App\Services\MarkdownService;
 use App\Services\PeterStringService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,7 +43,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/news/{slug}", name="article_show")
      */
-    public function show(Article $article/*, Client $slack*/)
+    public function show(Article $article/*, CommentRepository $commentRepository/*, Client $slack*/)
     {
         /*if ($slug === 'khaaaaaan')
         {
@@ -63,6 +64,7 @@ class ArticleController extends AbstractController
 //        if ( !$article){
 //            throw $this->createNotFoundException( sprintf("No article found with slug %s", $slug));
 //        }
+
 
         $comments = [
             'I ate a normal rock once. It did NOT taste like bacon!',
