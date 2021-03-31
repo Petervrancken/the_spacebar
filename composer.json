@@ -10,6 +10,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
         "knplabs/knp-markdown-bundle": "^1.9",
+        "knplabs/knp-time-bundle": "^1.16",
         "nexylan/slack-bundle": "^2.2",
         "nyholm/psr7": "^1.4",
         "php-extended/php-http-message-factory-psr17": "^3.1",
