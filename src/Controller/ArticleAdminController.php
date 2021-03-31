@@ -32,6 +32,10 @@ EOF
             $a->setPublishedAt( new \DateTime( sprintf('-%d days', rand(1,100))));
         }
 
+        $a->setAuthor("Mike Vandenborre")
+            ->setHeartCount(rand(5,100))
+            ->setImageFilename('asteroid.jpeg');
+
         $entityManager->persist($a);
         $entityManager->flush();
 
