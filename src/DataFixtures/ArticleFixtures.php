@@ -30,7 +30,7 @@ class ArticleFixtures extends BaseFixtures
         $this->createMany(Article::class, 10, function( Article $a, $count ){
 
             $a->setTitle($this->faker->randomElement(self::$articleTitles) );
-            $a->setSlug($this->faker->slug );
+            //$a->setSlug($this->faker->slug );
             $a->setContent(<<<EOF
     Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow, lorem proident …
     Pig hamburger pork belly enim. Do porchetta minim capicola irure pancetta chuck fugiat.
