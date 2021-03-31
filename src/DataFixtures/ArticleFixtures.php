@@ -57,6 +57,8 @@ EOF
             $comment2->setContent('Nobody wants to learn doctrine!');
             $comment2->setArticle($a);
             $manager->persist($comment2);
+
+
         });
 
         $manager->flush();
